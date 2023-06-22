@@ -1,0 +1,44 @@
+{
+  "size": {
+    "0": {
+      "value": "0",
+      "group": "spacing"
+    },
+    "1": {
+      "value": "4",
+      "group": "spacing"
+    },
+    "2": {
+      "value": "8",
+      "group": "spacing"
+    },
+    "3": {
+      "value": "12",
+      "group": "spacing"
+    },
+    "4": {
+      "value": "16",
+      "group": "spacing"
+    },
+    "5": {
+      "value": "24",
+      "group": "spacing"
+    },
+    "6": {
+      "value": "32",
+      "group": "spacing"
+    },
+    "7": {
+      "value": "40",
+      "group": "spacing"
+    },
+    "8": {
+      "value": "48",
+      "group": "spacing"
+    },
+    "9": {
+      "value": "56",
+      "group": "spacing"
+    }
+  }
+}

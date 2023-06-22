@@ -1,0 +1,10 @@
+{
+  "api": "1.0.0",
+  "editorType": [
+    "figma"
+  ],
+  "id": "figma-import-sd-variables",
+  "name": "Import Style Dictionary Variables",
+  "main": "build/main.js",
+  "ui": "build/ui.js"
+}

@@ -1,0 +1,27 @@
+{
+  "dependencies": {
+    "@create-figma-plugin/ui": "^2.5.0",
+    "@create-figma-plugin/utilities": "^2.5.0",
+    "preact": ">=10"
+  },
+  "devDependencies": {
+    "@create-figma-plugin/build": "^2.5.0",
+    "@create-figma-plugin/tsconfig": "^2.5.0",
+    "@figma/plugin-typings": "1.68.0",
+    "@types/prismjs": "^1.26.0",
+    "typescript": ">=4"
+  },
+  "scripts": {
+    "build": "build-figma-plugin --typecheck --minify",
+    "watch": "build-figma-plugin --typecheck --watch"
+  },
+  "figma-plugin": {
+    "editorType": [
+      "figma"
+    ],
+    "id": "figma-import-sd-variables",
+    "name": "Import Style Dictionary Variables",
+    "main": "src/main.ts",
+    "ui": "src/ui.tsx"
+  }
+}
