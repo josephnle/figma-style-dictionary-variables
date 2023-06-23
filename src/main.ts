@@ -1,22 +1,24 @@
 import { once, showUI, emit } from '@create-figma-plugin/utilities'
 import chroma from 'chroma-js'
 
-import { ImportTokensHandler, ReportErrorHandler } from './types'
+import { ImportTokensHandler, ReportErrorHandler, ReportSuccessHandler } from './types'
 
 interface CollectionsStore {
   [key: string]: VariableCollection
 }
 
 const traverseTokens = (properties: any, prefix: string[], collections: CollectionsStore, category: string) => {
+  let totalTokens = 0
+
   for (const [key, value] of Object.entries(properties)) {
     const prefixedKey = [...prefix, key]
     if (value.value === undefined) {
-      traverseTokens(value, prefixedKey, collections, category)
+      totalTokens += traverseTokens(value, prefixedKey, collections, category)
       continue
     }
 
     if (value.value.startsWith('{')) {
-      emit<ReportErrorHandler>('REPORT_ERROR', `Sorry, variable aliases are not yet supported. 😢 The rest of your variables have been imported.`)
+      emit<ReportErrorHandler>('REPORT_ERROR', 'Sorry, variable aliases are not yet supported. 😢')
       continue
     }
 
@@ -47,14 +49,17 @@ const traverseTokens = (properties: any, prefix: string[], collections: Collecti
         break
       }
       case 'content': {
-        console.log(prefixedKey)
         const variable = figma.variables.createVariable(prefixedKey.join('/'), collections[collectionName].id, 'STRING')
 
         variable.setValueForMode(collections[collectionName].defaultModeId, value.value)
         break
       }
     }
+
+    totalTokens += 1
   }
+
+  return totalTokens
 }
 
 export default function () {
@@ -70,7 +75,13 @@ export default function () {
       emit<ReportErrorHandler>('REPORT_ERROR', `We currently only support the following categories: ${allowCategories.join(', ')}`)
     }
 
-    traverseTokens(properties, [], collections, category)
+    const totalTokens = traverseTokens(properties, [], collections, category)
+
+    console.log(totalTokens)
+
+    if (totalTokens > 0) {
+      emit<ReportSuccessHandler>('REPORT_SUCCESS', `Imported ${totalTokens} tokens as variables.`)
+    }
   })
   showUI({ height: 240, width: 320 })
 }

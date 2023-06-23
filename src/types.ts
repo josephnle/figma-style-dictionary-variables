@@ -10,3 +10,8 @@ export interface ReportErrorHandler extends EventHandler {
   name: 'REPORT_ERROR'
   handler: (error: string) => void
 }
+
+export interface ReportSuccessHandler extends EventHandler {
+  name: 'REPORT_SUCCESS'
+  handler: (msg: string) => void
+}
