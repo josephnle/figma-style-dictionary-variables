@@ -4,7 +4,7 @@
     "figma"
   ],
   "id": "figma-import-sd-variables",
-  "name": "Import Style Dictionary Variables",
+  "name": "Style Dictionary to Variables",
   "main": "build/main.js",
   "ui": "build/ui.js"
 }

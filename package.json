@@ -22,7 +22,7 @@
       "figma"
     ],
     "id": "figma-import-sd-variables",
-    "name": "Import Style Dictionary Variables",
+    "name": "Style Dictionary to Variables",
     "main": "src/main.ts",
     "ui": "src/ui.tsx"
   }

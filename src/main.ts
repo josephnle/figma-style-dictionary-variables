@@ -83,5 +83,5 @@ export default function () {
       emit<ReportSuccessHandler>('REPORT_SUCCESS', `Imported ${totalTokens} tokens as variables.`)
     }
   })
-  showUI({ height: 240, width: 320 })
+  showUI({ height: 300, width: 320 })
 }
