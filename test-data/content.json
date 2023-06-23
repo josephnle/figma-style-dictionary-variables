@@ -1,0 +1,12 @@
+{
+  "content": {
+    "CompanyName": {
+      "value": "Capanna della Pizza",
+      "group": "content"
+    },
+    "Tagline": {
+      "value": "Pizza - the best food group in the world.",
+      "group": "content"
+    }
+  }
+}

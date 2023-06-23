@@ -28,22 +28,29 @@ const traverseTokens = (properties: any, prefix: string[], collections: Collecti
 
     switch(category) {
       case 'size': {
-        const variable = figma.variables.createVariable(prefixedKey.join('/'), collections[value.group].id, 'FLOAT')
+        const variable = figma.variables.createVariable(prefixedKey.join('/'), collections[collectionName].id, 'FLOAT')
 
-        variable.setValueForMode(collections[value.group].defaultModeId, parseInt(value.value))
+        variable.setValueForMode(collections[collectionName].defaultModeId, parseInt(value.value))
         break
       }
       case 'color': {
-        const variable = figma.variables.createVariable(prefixedKey.join('/'), collections[value.group].id, 'COLOR')
+        const variable = figma.variables.createVariable(prefixedKey.join('/'), collections[collectionName].id, 'COLOR')
 
         const rgbColor = chroma(value.value).rgba();
 
-        variable.setValueForMode(collections[value.group].defaultModeId, {
+        variable.setValueForMode(collections[collectionName].defaultModeId, {
           r: rgbColor[0] / 255,
           g: rgbColor[1] / 255,
           b: rgbColor[2] / 255,
           a: rgbColor[3],
         })
+        break
+      }
+      case 'content': {
+        console.log(prefixedKey)
+        const variable = figma.variables.createVariable(prefixedKey.join('/'), collections[collectionName].id, 'STRING')
+
+        variable.setValueForMode(collections[collectionName].defaultModeId, value.value)
         break
       }
     }
@@ -57,13 +64,13 @@ export default function () {
     const [category, properties] = Object.entries(file)[0]
     const collections: CollectionsStore = {}
 
-    const allowCategories = ['size', 'color']
+    const allowCategories = ['size', 'color', 'content']
 
     if (!allowCategories.includes(category)) {
       emit<ReportErrorHandler>('REPORT_ERROR', `We currently only support the following categories: ${allowCategories.join(', ')}`)
     }
 
-    traverseTokens(properties, '', collections, category)
+    traverseTokens(properties, [], collections, category)
   })
   showUI({ height: 240, width: 320 })
 }
