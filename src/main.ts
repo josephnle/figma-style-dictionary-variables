@@ -15,14 +15,18 @@ interface ResolveTokenType {
   value: any
 }
 
-const traverseTokens = (properties: any, prefix: string[], collections: CollectionsStore, category: string) => {
+interface TokenProperties {
+  [key: string]: {value: string; group: string} | TokenProperties
+}
+
+const traverseTokens = (properties: TokenProperties, prefix: string[], collections: CollectionsStore, category: string) => {
   const createdVariables: {name: string, variable: Variable}[] = []
   const aliases: ResolveTokenType[] = []
 
   for (const [key, value] of Object.entries(properties)) {
     const prefixedKey = [...prefix, key]
     if (value.value === undefined) {
-      const recursiveResult = traverseTokens(value, prefixedKey, collections, category)
+      const recursiveResult = traverseTokens(value as TokenProperties, prefixedKey, collections, category)
       createdVariables.push(...recursiveResult.variables)
       aliases.push(...recursiveResult.aliases)
       continue
@@ -30,7 +34,7 @@ const traverseTokens = (properties: any, prefix: string[], collections: Collecti
 
     const collectionName = value.group ? category : value.group
 
-    if (value.value.startsWith('{')) {
+    if (typeof value.value === 'string' && value.value.startsWith('{')) {
       aliases.push({
         properties: value,
         name: prefixedKey,
@@ -49,7 +53,7 @@ const traverseTokens = (properties: any, prefix: string[], collections: Collecti
       case 'size': {
         const variable = figma.variables.createVariable(prefixedKey.join('/'), collections[collectionName].id, 'FLOAT')
 
-        variable.setValueForMode(collections[collectionName].defaultModeId, parseInt(value.value))
+        variable.setValueForMode(collections[collectionName].defaultModeId, parseInt(value.value as string))
         createdVariables.push({
           name: prefixedKey.join('/'),
           variable,
@@ -59,7 +63,7 @@ const traverseTokens = (properties: any, prefix: string[], collections: Collecti
       case 'color': {
         const variable = figma.variables.createVariable(prefixedKey.join('/'), collections[collectionName].id, 'COLOR')
 
-        const rgbColor = chroma(value.value).rgba();
+        const rgbColor = chroma(value.value as string).rgba();
 
         variable.setValueForMode(collections[collectionName].defaultModeId, {
           r: rgbColor[0] / 255,
@@ -76,7 +80,7 @@ const traverseTokens = (properties: any, prefix: string[], collections: Collecti
       case 'content': {
         const variable = figma.variables.createVariable(prefixedKey.join('/'), collections[collectionName].id, 'STRING')
 
-        variable.setValueForMode(collections[collectionName].defaultModeId, value.value)
+        variable.setValueForMode(collections[collectionName].defaultModeId, value.value as string)
         createdVariables.push({
           name: prefixedKey.join('/'),
           variable,
@@ -143,7 +147,7 @@ export default function () {
       emit<ReportErrorHandler>('REPORT_ERROR', `We currently only support the following categories: ${allowCategories.join(', ')}`)
     }
 
-    const totalTokens = traverseTokens(properties, [], collections, category)
+    const totalTokens = traverseTokens(properties as TokenProperties, [], collections, category)
 
     const totalAliased = resolveVariableAliases(totalTokens.variables, totalTokens.aliases, collections, category)
 
