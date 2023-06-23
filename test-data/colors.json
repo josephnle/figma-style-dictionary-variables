@@ -1,0 +1,830 @@
+{
+  "color": {
+    "Core": {
+      "Purple": {
+        "100": {
+          "value": "#F1EBFF",
+          "group": "color"
+        },
+        "200": {
+          "value": "#DBCCFF",
+          "group": "color"
+        },
+        "300": {
+          "value": "#CBB2FF",
+          "group": "color"
+        },
+        "400": {
+          "value": "#B796FF",
+          "group": "color"
+        },
+        "500": {
+          "value": "#AA85FF",
+          "group": "color"
+        },
+        "600": {
+          "value": "#8652FF",
+          "group": "color"
+        },
+        "700": {
+          "value": "#631FFF",
+          "group": "color"
+        },
+        "800": {
+          "value": "#4700EB",
+          "group": "color"
+        },
+        "900": {
+          "value": "#290087",
+          "group": "color"
+        }
+      },
+      "Red": {
+        "100": {
+          "value": "#FFEBF0",
+          "group": "color"
+        },
+        "200": {
+          "value": "#FFD2DC",
+          "group": "color"
+        },
+        "300": {
+          "value": "#FEB9CB",
+          "group": "color"
+        },
+        "400": {
+          "value": "#FDA0B8",
+          "group": "color"
+        },
+        "500": {
+          "value": "#FD87A6",
+          "group": "color"
+        },
+        "600": {
+          "value": "#FC5A85",
+          "group": "color"
+        },
+        "700": {
+          "value": "#FB3268",
+          "group": "color"
+        },
+        "800": {
+          "value": "#EB0744",
+          "group": "color"
+        },
+        "900": {
+          "value": "#C80438",
+          "group": "color"
+        }
+      },
+      "Orange": {
+        "100": {
+          "value": "#FFE6D6",
+          "group": "color"
+        },
+        "200": {
+          "value": "#FFC5A0",
+          "group": "color"
+        },
+        "300": {
+          "value": "#FFB487",
+          "group": "color"
+        },
+        "400": {
+          "value": "#FFA26F",
+          "group": "color"
+        },
+        "500": {
+          "value": "#FE9058",
+          "group": "color"
+        },
+        "600": {
+          "value": "#FC7D41",
+          "group": "color"
+        },
+        "700": {
+          "value": "#F9682A",
+          "group": "color"
+        },
+        "800": {
+          "value": "#DD5024",
+          "group": "color"
+        },
+        "900": {
+          "value": "#C2451E",
+          "group": "color"
+        }
+      },
+      "Yellow": {
+        "100": {
+          "value": "#FFF7DE",
+          "group": "color"
+        },
+        "200": {
+          "value": "#FFECB6",
+          "group": "color"
+        },
+        "300": {
+          "value": "#FFE49C",
+          "group": "color"
+        },
+        "400": {
+          "value": "#FFDC81",
+          "group": "color"
+        },
+        "500": {
+          "value": "#FFD465",
+          "group": "color"
+        },
+        "600": {
+          "value": "#FFCC47",
+          "group": "color"
+        },
+        "700": {
+          "value": "#FFC31F",
+          "group": "color"
+        },
+        "800": {
+          "value": "#EBAC00",
+          "group": "color"
+        },
+        "900": {
+          "value": "#D69D00",
+          "group": "color"
+        }
+      },
+      "Green": {
+        "100": {
+          "value": "#E4F6EB",
+          "group": "color"
+        },
+        "200": {
+          "value": "#C0EBD0",
+          "group": "color"
+        },
+        "300": {
+          "value": "#A7E3BD",
+          "group": "color"
+        },
+        "400": {
+          "value": "#8FDBAB",
+          "group": "color"
+        },
+        "500": {
+          "value": "#76D397",
+          "group": "color"
+        },
+        "600": {
+          "value": "#5BCA84",
+          "group": "color"
+        },
+        "700": {
+          "value": "#3BC170",
+          "group": "color"
+        },
+        "800": {
+          "value": "#35A260",
+          "group": "color"
+        },
+        "900": {
+          "value": "#2B7A4B",
+          "group": "color"
+        }
+      },
+      "Teal": {
+        "100": {
+          "value": "#D1F3F7",
+          "group": "color"
+        },
+        "200": {
+          "value": "#BAEDF2",
+          "group": "color"
+        },
+        "300": {
+          "value": "#ABE8EF",
+          "group": "color"
+        },
+        "400": {
+          "value": "#92E2EA",
+          "group": "color"
+        },
+        "500": {
+          "value": "#81DDE7",
+          "group": "color"
+        },
+        "600": {
+          "value": "#62D7E3",
+          "group": "color"
+        },
+        "700": {
+          "value": "#33CADB",
+          "group": "color"
+        },
+        "800": {
+          "value": "#2CBCC9",
+          "group": "color"
+        },
+        "900": {
+          "value": "#30828B",
+          "group": "color"
+        }
+      },
+      "Blue": {
+        "100": {
+          "value": "#DDEBFF",
+          "group": "color"
+        },
+        "200": {
+          "value": "#B5D1FF",
+          "group": "color"
+        },
+        "300": {
+          "value": "#9BC0FF",
+          "group": "color"
+        },
+        "400": {
+          "value": "#81AEFF",
+          "group": "color"
+        },
+        "500": {
+          "value": "#679DFF",
+          "group": "color"
+        },
+        "600": {
+          "value": "#4A8BFD",
+          "group": "color"
+        },
+        "700": {
+          "value": "#2379FA",
+          "group": "color"
+        },
+        "800": {
+          "value": "#055FE6",
+          "group": "color"
+        },
+        "900": {
+          "value": "#033682",
+          "group": "color"
+        }
+      },
+      "Slate": {
+        "50": {
+          "value": "#F4F4F6",
+          "group": "color"
+        },
+        "100": {
+          "value": "#E6E6EA",
+          "group": "color"
+        },
+        "200": {
+          "value": "#D7D8DF",
+          "group": "color"
+        },
+        "300": {
+          "value": "#C9CAD3",
+          "group": "color"
+        },
+        "400": {
+          "value": "#BBBCC8",
+          "group": "color"
+        },
+        "500": {
+          "value": "#ADAEBC",
+          "group": "color"
+        },
+        "600": {
+          "value": "#9FA1B1",
+          "group": "color"
+        },
+        "700": {
+          "value": "#9194A6",
+          "group": "color"
+        },
+        "800": {
+          "value": "#6A6D81",
+          "group": "color"
+        },
+        "900": {
+          "value": "#3C3E49",
+          "group": "color"
+        },
+        "1000": {
+          "value": "#0E0E11",
+          "group": "color"
+        }
+      }
+    },
+    "Primary": {
+      "Black": {
+        "value": "#000000",
+        "group": "color"
+      },
+      "White": {
+        "value": "#FFFFFF",
+        "group": "color"
+      },
+      "Purple": {
+        "value": "{color.Core.Purple.700}",
+        "group": "color"
+      },
+      "Red": {
+        "value": "{color.Core.Red.700}",
+        "group": "color"
+      },
+      "Orange": {
+        "value": "{color.Core.Orange.700}",
+        "group": "color"
+      },
+      "Yellow": {
+        "value": "{color.Core.Yellow.700}",
+        "group": "color"
+      },
+      "Green": {
+        "value": "{color.Core.Green.700}",
+        "group": "color"
+      },
+      "Teal": {
+        "value": "{color.Core.Teal.700}",
+        "group": "color"
+      },
+      "Blue": {
+        "value": "{color.Core.Blue.700}",
+        "group": "color"
+      }
+    },
+    "Background": {
+      "Primary": {
+        "value": "{color.Primary.White}",
+        "group": "color"
+      },
+      "Secondary": {
+        "value": "{color.Core.Slate.50}",
+        "group": "color"
+      },
+      "Button": {
+        "Default": {
+          "value": "{color.Core.Slate.100}",
+          "group": "color"
+        },
+        "Default Active": {
+          "value": "{color.Core.Slate.300}",
+          "group": "color"
+        },
+        "Default Disabled": {
+          "value": "{color.Core.Slate.100}",
+          "group": "color"
+        },
+        "Text": {
+          "value": "{color.Primary.White}",
+          "group": "color"
+        },
+        "Text Active": {
+          "value": "{color.Core.Purple.100}",
+          "group": "color"
+        },
+        "Text Disabled": {
+          "value": "{color.Core.Slate.50}",
+          "group": "color"
+        },
+        "Primary": {
+          "value": "{color.Primary.Purple}",
+          "group": "color"
+        },
+        "Primary Active": {
+          "value": "{color.Core.Purple.900}",
+          "group": "color"
+        },
+        "Primary Disabled": {
+          "value": "{color.Core.Purple.400}",
+          "group": "color"
+        },
+        "Danger": {
+          "value": "{color.Core.Red.800}",
+          "group": "color"
+        },
+        "Danger Active": {
+          "value": "{color.Core.Red.900}",
+          "group": "color"
+        },
+        "Danger Disabled": {
+          "value": "{color.Core.Red.400}",
+          "group": "color"
+        }
+      },
+      "Input": {
+        "Default": {
+          "value": "{color.Background.Primary}",
+          "group": "color"
+        },
+        "Disabled": {
+          "value": "{color.Core.Slate.50}",
+          "group": "color"
+        },
+        "Checkbox": {
+          "value": "{color.Primary.White}",
+          "group": "color"
+        },
+        "Checkbox Checked": {
+          "value": "{color.Primary.Blue}",
+          "group": "color"
+        },
+        "Checkbox Disabled": {
+          "value": "{color.Core.Slate.300}",
+          "group": "color"
+        },
+        "Toggle": {
+          "value": "{color.Core.Slate.800}",
+          "group": "color"
+        },
+        "Toggle Disabled": {
+          "value": "{color.Core.Slate.300}",
+          "group": "color"
+        },
+        "Toggle Checked": {
+          "value": "{color.Primary.Purple}",
+          "group": "color"
+        },
+        "Toggle Checked Disabled": {
+          "value": "{color.Core.Purple.300}",
+          "group": "color"
+        },
+        "Toggle Danger": {
+          "value": "{color.Core.Red.800}",
+          "group": "color"
+        },
+        "Toggle Danger Disabled": {
+          "value": "{color.Core.Red.400}",
+          "group": "color"
+        }
+      },
+      "Label": {
+        "Grey": {
+          "value": "{color.Core.Slate.100}",
+          "group": "color"
+        },
+        "Grey Hover": {
+          "value": "{color.Core.Slate.400}",
+          "group": "color"
+        },
+        "Grey Disabled": {
+          "value": "{color.Core.Slate.50}",
+          "group": "color"
+        },
+        "Dark Grey": {
+          "value": "{color.Core.Slate.300}",
+          "group": "color"
+        },
+        "Dark Grey Hover": {
+          "value": "{color.Core.Slate.500}",
+          "group": "color"
+        },
+        "Dark Grey Disabled": {
+          "value": "{color.Core.Slate.100}",
+          "group": "color"
+        },
+        "Purple": {
+          "value": "{color.Core.Purple.300}",
+          "group": "color"
+        },
+        "Purple Hover": {
+          "value": "{color.Core.Purple.500}",
+          "group": "color"
+        },
+        "Purple Disabled": {
+          "value": "{color.Core.Purple.100}",
+          "group": "color"
+        },
+        "Red": {
+          "value": "{color.Core.Red.300}",
+          "group": "color"
+        },
+        "Red Hover": {
+          "value": "{color.Core.Red.500}",
+          "group": "color"
+        },
+        "Red Disabled": {
+          "value": "{color.Core.Red.100}",
+          "group": "color"
+        },
+        "Dark Red": {
+          "value": "{color.Core.Red.800}",
+          "group": "color"
+        },
+        "Dark Red Hover": {
+          "value": "{color.Core.Red.900}",
+          "group": "color"
+        },
+        "Dark Red Disabled": {
+          "value": "{color.Core.Red.300}",
+          "group": "color"
+        },
+        "Orange": {
+          "value": "{color.Core.Orange.200}",
+          "group": "color"
+        },
+        "Orange Hover": {
+          "value": "{color.Core.Orange.500}",
+          "group": "color"
+        },
+        "Orange Disabled": {
+          "value": "{color.Core.Orange.100}",
+          "group": "color"
+        },
+        "Yellow": {
+          "value": "{color.Core.Yellow.200}",
+          "group": "color"
+        },
+        "Yellow Hover": {
+          "value": "{color.Core.Yellow.500}",
+          "group": "color"
+        },
+        "Yellow Disabled": {
+          "value": "{color.Core.Yellow.100}",
+          "group": "color"
+        },
+        "Green": {
+          "value": "{color.Core.Green.300}",
+          "group": "color"
+        },
+        "Green Hover": {
+          "value": "{color.Core.Green.500}",
+          "group": "color"
+        },
+        "Green Disabled": {
+          "value": "{color.Core.Green.100}",
+          "group": "color"
+        },
+        "Teal": {
+          "value": "{color.Core.Teal.300}",
+          "group": "color"
+        },
+        "Teal Hover": {
+          "value": "{color.Core.Teal.500}",
+          "group": "color"
+        },
+        "Teal Disabled": {
+          "value": "{color.Core.Teal.100}",
+          "group": "color"
+        },
+        "Blue": {
+          "value": "{color.Core.Blue.300}",
+          "group": "color"
+        },
+        "Blue Hover": {
+          "value": "{color.Core.Blue.500}",
+          "group": "color"
+        },
+        "Blue Disabled": {
+          "value": "{color.Core.Blue.100}",
+          "group": "color"
+        },
+        "White": {
+          "value": "{color.Primary.White}",
+          "group": "color"
+        },
+        "White Hover": {
+          "value": "{color.Core.Slate.300}",
+          "group": "color"
+        },
+        "White Disabled": {
+          "value": "{color.Primary.White}",
+          "group": "color"
+        }
+      },
+      "Docs": {
+        "Note": {
+          "Default": {
+            "value": "{color.Core.Yellow.100}",
+            "group": "color"
+          },
+          "Feedback": {
+            "value": "{color.Core.Blue.100}",
+            "group": "color"
+          },
+          "Action Item": {
+            "value": "{color.Core.Red.100}",
+            "group": "color"
+          },
+          "Flow": {
+            "value": "{color.Core.Purple.100}",
+            "group": "color"
+          }
+        },
+        "Frame Label": {
+          "Slate": {
+            "value": "{color.Core.Slate.1000}",
+            "group": "color"
+          },
+          "Purple": {
+            "value": "{color.Primary.Purple}",
+            "group": "color"
+          },
+          "Blue": {
+            "value": "{color.Primary.Blue}",
+            "group": "color"
+          },
+          "Red": {
+            "value": "{color.Primary.Red}",
+            "group": "color"
+          }
+        }
+      }
+    },
+    "Text": {
+      "Primary": {
+        "value": "{color.Core.Slate.1000}",
+        "group": "color"
+      },
+      "Secondary": {
+        "value": "{color.Core.Slate.800}",
+        "group": "color"
+      },
+      "Inverse": {
+        "value": "{color.Primary.White}",
+        "group": "color"
+      },
+      "Active": {
+        "value": "{color.Primary.Purple}",
+        "group": "color"
+      },
+      "Danger": {
+        "value": "{color.Core.Red.800}",
+        "group": "color"
+      },
+      "Disabled": {
+        "value": "{color.Core.Slate.500}",
+        "group": "color"
+      }
+    },
+    "Border": {
+      "Hairline": {
+        "value": "{color.Core.Slate.100}",
+        "group": "color"
+      },
+      "Divider": {
+        "value": "{color.Core.Slate.200}",
+        "group": "color"
+      },
+      "Icon": {
+        "Primary": {
+          "value": "{color.Core.Slate.1000}",
+          "group": "color"
+        },
+        "Secondary": {
+          "value": "{color.Core.Slate.800}",
+          "group": "color"
+        },
+        "Inverse": {
+          "value": "{color.Primary.White}",
+          "group": "color"
+        },
+        "Active": {
+          "value": "{color.Primary.Purple}",
+          "group": "color"
+        },
+        "Success": {
+          "value": "{color.Core.Green.800}",
+          "group": "color"
+        },
+        "Warning": {
+          "value": "{color.Core.Yellow.800}",
+          "group": "color"
+        },
+        "Danger": {
+          "value": "{color.Core.Red.800}",
+          "group": "color"
+        },
+        "Disabled": {
+          "value": "{color.Core.Slate.500}",
+          "group": "color"
+        },
+        "Label": {
+          "Grey": {
+            "value": "{color.Core.Slate.800}",
+            "group": "color"
+          },
+          "Grey Disabled": {
+            "value": "{color.Core.Slate.100}",
+            "group": "color"
+          },
+          "Dark Grey": {
+            "value": "{color.Core.Slate.900}",
+            "group": "color"
+          },
+          "Dark Grey Disabled": {
+            "value": "{color.Core.Slate.200}",
+            "group": "color"
+          },
+          "Purple": {
+            "value": "{color.Core.Purple.900}",
+            "group": "color"
+          },
+          "Purple Disabled": {
+            "value": "{color.Core.Purple.200}",
+            "group": "color"
+          },
+          "Red": {
+            "value": "{color.Core.Red.900}",
+            "group": "color"
+          },
+          "Red Disabled": {
+            "value": "{color.Core.Red.200}",
+            "group": "color"
+          },
+          "Dark Red": {
+            "value": "{color.Primary.White}",
+            "group": "color"
+          },
+          "Dark Red Disabled": {
+            "value": "{color.Primary.White}",
+            "group": "color"
+          },
+          "Orange": {
+            "value": "{color.Core.Orange.900}",
+            "group": "color"
+          },
+          "Orange Disabled": {
+            "value": "{color.Core.Orange.200}",
+            "group": "color"
+          },
+          "Yellow": {
+            "value": "{color.Core.Yellow.900}",
+            "group": "color"
+          },
+          "Yellow Disabled": {
+            "value": "{color.Core.Yellow.300}",
+            "group": "color"
+          },
+          "Green": {
+            "value": "{color.Core.Green.900}",
+            "group": "color"
+          },
+          "Green Disabled": {
+            "value": "{color.Core.Green.200}",
+            "group": "color"
+          },
+          "Teal": {
+            "value": "{color.Core.Teal.900}",
+            "group": "color"
+          },
+          "Teal Disabled": {
+            "value": "{color.Core.Teal.300}",
+            "group": "color"
+          },
+          "Blue": {
+            "value": "{color.Core.Blue.900}",
+            "group": "color"
+          },
+          "Blue Disabled": {
+            "value": "{color.Core.Blue.200}",
+            "group": "color"
+          },
+          "White": {
+            "value": "{color.Core.Slate.700}",
+            "group": "color"
+          },
+          "White Disabled": {
+            "value": "{color.Core.Slate.100}",
+            "group": "color"
+          }
+        }
+      },
+      "Input": {
+        "Default": {
+          "value": "{color.Core.Slate.800}",
+          "group": "color"
+        },
+        "Active": {
+          "value": "{color.Primary.Purple}",
+          "group": "color"
+        },
+        "Danger": {
+          "value": "{color.Core.Red.800}",
+          "group": "color"
+        },
+        "Disabled": {
+          "value": "{color.Core.Slate.400}",
+          "group": "color"
+        }
+      },
+      "Note": {
+        "Default": {
+          "value": "{color.Core.Yellow.600}",
+          "group": "color"
+        },
+        "Feedback": {
+          "value": "{color.Core.Blue.600}",
+          "group": "color"
+        },
+        "Action Item": {
+          "value": "{color.Core.Red.600}",
+          "group": "color"
+        },
+        "Flow": {
+          "value": "{color.Core.Purple.600}",
+          "group": "color"
+        }
+      }
+    }
+  }
+}
