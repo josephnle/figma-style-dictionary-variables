@@ -7,22 +7,39 @@ interface CollectionsStore {
   [key: string]: VariableCollection
 }
 
+interface ResolveTokenType {
+  properties: any
+  name: string[]
+  collection: string
+  category: string
+  value: any
+}
+
 const traverseTokens = (properties: any, prefix: string[], collections: CollectionsStore, category: string) => {
-  let totalTokens = 0
+  const createdVariables: {name: string, variable: Variable}[] = []
+  const aliases: ResolveTokenType[] = []
 
   for (const [key, value] of Object.entries(properties)) {
     const prefixedKey = [...prefix, key]
     if (value.value === undefined) {
-      totalTokens += traverseTokens(value, prefixedKey, collections, category)
-      continue
-    }
-
-    if (value.value.startsWith('{')) {
-      emit<ReportErrorHandler>('REPORT_ERROR', 'Sorry, variable aliases are not yet supported. 😢')
+      const recursiveResult = traverseTokens(value, prefixedKey, collections, category)
+      createdVariables.push(...recursiveResult.variables)
+      aliases.push(...recursiveResult.aliases)
       continue
     }
 
     const collectionName = value.group ? category : value.group
+
+    if (value.value.startsWith('{')) {
+      aliases.push({
+        properties: value,
+        name: prefixedKey,
+        collection: collectionName,
+        category,
+        value: value.value
+      })
+      continue
+    }
 
     if (collections[collectionName] === undefined) {
       collections[collectionName] = figma.variables.createVariableCollection(collectionName)
@@ -33,6 +50,10 @@ const traverseTokens = (properties: any, prefix: string[], collections: Collecti
         const variable = figma.variables.createVariable(prefixedKey.join('/'), collections[collectionName].id, 'FLOAT')
 
         variable.setValueForMode(collections[collectionName].defaultModeId, parseInt(value.value))
+        createdVariables.push({
+          name: prefixedKey.join('/'),
+          variable,
+        })
         break
       }
       case 'color': {
@@ -46,20 +67,67 @@ const traverseTokens = (properties: any, prefix: string[], collections: Collecti
           b: rgbColor[2] / 255,
           a: rgbColor[3],
         })
+        createdVariables.push({
+          name: prefixedKey.join('/'),
+          variable,
+        })
         break
       }
       case 'content': {
         const variable = figma.variables.createVariable(prefixedKey.join('/'), collections[collectionName].id, 'STRING')
 
         variable.setValueForMode(collections[collectionName].defaultModeId, value.value)
+        createdVariables.push({
+          name: prefixedKey.join('/'),
+          variable,
+        })
         break
       }
     }
-
-    totalTokens += 1
   }
 
-  return totalTokens
+  return {
+    variables: createdVariables,
+    aliases,
+  }
+}
+
+const resolveVariableAliases = (variables: {name: string, variable: Variable}[], aliases: ResolveTokenType[], collections: CollectionsStore, category: string) => {
+  const createdVariables: Variable[] = []
+
+  const figmaType: {size: VariableResolvedDataType, color: VariableResolvedDataType, content: VariableResolvedDataType} = {
+    size: 'FLOAT',
+    color: 'COLOR',
+    content: 'STRING',
+  }
+
+  for (const alias of aliases) {
+    const normalizedAliasName = alias.value.replace('color.', '').replace('{', '').replace('}', '').replace(/\./g, '/')
+
+    const findVariable = variables.find(
+      v => v.name === normalizedAliasName
+    )
+
+    console.log(findVariable)
+    if (!findVariable) {
+      continue
+    }
+
+    const aliasedVariable = figma.variables.createVariable(
+      alias.name.join('/'),
+      collections[alias.collection].id,
+      figmaType[category as 'size' | 'color' | 'content']
+    )
+
+    aliasedVariable.setValueForMode(
+      collections[alias.collection].defaultModeId,
+      figma.variables.createVariableAlias(findVariable.variable)
+    )
+
+    createdVariables.push(aliasedVariable)
+  }
+
+  return createdVariables
 }
 
 export default function () {
@@ -77,8 +145,10 @@ export default function () {
 
     const totalTokens = traverseTokens(properties, [], collections, category)
 
-    if (totalTokens > 0) {
-      emit<ReportSuccessHandler>('REPORT_SUCCESS', `Imported ${totalTokens} tokens as variables.`)
+    const totalAliased = resolveVariableAliases(totalTokens.variables, totalTokens.aliases, collections, category)
+
+    if (totalTokens.variables.length > 0) {
+      emit<ReportSuccessHandler>('REPORT_SUCCESS', `Imported ${totalTokens.variables.length + totalAliased.length} tokens as variables.`)
     }
   })
   showUI({ height: 300, width: 320 })
