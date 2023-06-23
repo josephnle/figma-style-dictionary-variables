@@ -77,8 +77,6 @@ export default function () {
 
     const totalTokens = traverseTokens(properties, [], collections, category)
 
-    console.log(totalTokens)
-
     if (totalTokens > 0) {
       emit<ReportSuccessHandler>('REPORT_SUCCESS', `Imported ${totalTokens} tokens as variables.`)
     }
