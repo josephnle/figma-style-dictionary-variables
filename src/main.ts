@@ -1,4 +1,4 @@
-import { once, showUI, emit } from '@create-figma-plugin/utilities'
+import { on, showUI, emit } from '@create-figma-plugin/utilities'
 import chroma from 'chroma-js'
 
 import { ImportTokensHandler, ReportErrorHandler, ReportSuccessHandler } from './types'
@@ -135,7 +135,7 @@ const resolveVariableAliases = (variables: {name: string, variable: Variable}[],
 }
 
 export default function () {
-  once<ImportTokensHandler>('IMPORT_TOKENS', async (tokens: string) => {
+  on<ImportTokensHandler>('IMPORT_TOKENS', async (tokens: string) => {
     const file = JSON.parse(tokens)
 
     const [category, properties] = Object.entries(file)[0]
