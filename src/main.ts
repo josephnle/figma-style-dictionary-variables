@@ -1,7 +1,13 @@
 import { on, showUI, emit } from '@create-figma-plugin/utilities'
 import chroma from 'chroma-js'
 
-import { ImportTokensHandler, ReportErrorHandler, ReportSuccessHandler } from './types'
+import {
+  ImportTokensHandler,
+  ReportErrorHandler,
+  ReportSuccessHandler,
+  GetVariableCollectionsHandler,
+  GetVariableCollectionsResultHandler
+} from './types'
 
 interface CollectionsStore {
   [key: string]: VariableCollection
@@ -19,14 +25,14 @@ interface TokenProperties {
   [key: string]: {value: string; group: string} | TokenProperties
 }
 
-const traverseTokens = (properties: TokenProperties, prefix: string[], collections: CollectionsStore, category: string) => {
+const traverseTokens = (properties: TokenProperties, prefix: string[], collections: CollectionsStore, category: string, importMode: 'new' | 'replace' = 'new') => {
   const createdVariables: {name: string, variable: Variable}[] = []
   const aliases: ResolveTokenType[] = []
 
   for (const [key, value] of Object.entries(properties)) {
     const prefixedKey = [...prefix, key]
     if (value.value === undefined) {
-      const recursiveResult = traverseTokens(value as TokenProperties, prefixedKey, collections, category)
+      const recursiveResult = traverseTokens(value as TokenProperties, prefixedKey, collections, category, importMode)
       createdVariables.push(...recursiveResult.variables)
       aliases.push(...recursiveResult.aliases)
       continue
@@ -46,7 +52,20 @@ const traverseTokens = (properties: TokenProperties, prefix: string[], collectio
     }
 
     if (collections[collectionName] === undefined) {
-      collections[collectionName] = figma.variables.createVariableCollection(collectionName)
+      if (importMode === 'new') {
+        collections[collectionName] = figma.variables.createVariableCollection(collectionName)
+      } else {
+        // Find variable collection by name
+        const existingCollection = figma.variables
+          .getLocalVariableCollections()
+          .find(c => c.name.toLowerCase() === collectionName.toLowerCase());
+
+        if (!existingCollection) {
+          collections[collectionName] = figma.variables.createVariableCollection(collectionName)
+        } else {
+          collections[collectionName] = existingCollection
+        }
+      }
     }
 
     switch(category) {
@@ -135,7 +154,7 @@ const resolveVariableAliases = (variables: {name: string, variable: Variable}[],
 }
 
 export default function () {
-  on<ImportTokensHandler>('IMPORT_TOKENS', async (tokens: string) => {
+  on<ImportTokensHandler>('IMPORT_TOKENS', async (tokens, importMode) => {
     const file = JSON.parse(tokens)
 
     const [category, properties] = Object.entries(file)[0]
@@ -147,13 +166,22 @@ export default function () {
       emit<ReportErrorHandler>('REPORT_ERROR', `We currently only support the following categories: ${allowCategories.join(', ')}`)
     }
 
-    const totalTokens = traverseTokens(properties as TokenProperties, [], collections, category)
+    const totalTokens = traverseTokens(properties as TokenProperties, [], collections, category, importMode)
 
     const totalAliased = resolveVariableAliases(totalTokens.variables, totalTokens.aliases, collections, category)
 
     if (totalTokens.variables.length > 0) {
       emit<ReportSuccessHandler>('REPORT_SUCCESS', `Imported ${totalTokens.variables.length + totalAliased.length} tokens as variables.`)
     }
+  })
+  on<GetVariableCollectionsHandler>('GET_COLLECTIONS', () => {
+    emit<GetVariableCollectionsResultHandler>(
+      'GET_COLLECTIONS_RESULT',
+      figma.variables.getLocalVariableCollections().map(c => ({
+        id: c.id,
+        name: c.name,
+      }))
+    )
   })
   showUI({ height: 300, width: 320 })
 }
